@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Sistema de Irrigação</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sistema de Irrigação</h1>
+      <div id="status"></div>
+      <div id="monitoring">
+        <div class="card">
+          <p>Consumo de Água: <span id="consumption">0</span> litros</p>
+          <p>Nível de Água: <span id="level">50</span>%</p>
+          <p>Economia de Água: <span id="savings">0</span>%</p>
+        </div>
+        <div class="card">
+          <h2>Sistema de Irrigação</h2>
+          <img
+            src="irrigation_system_image.jpg"
+            alt="Ilustração do Sistema de Irrigação"
+          />
+          <p>
+            Descrição: Este é um modelo básico ilustrativo de um sistema de
+            irrigação.
+          </p>
+          <p>Estado Atual: Ativo</p>
+        </div>
+
+        <div class="card">
+          <p>Temperatura: <span id="temperature">25</span>°C</p>
+          <p>Umidade do Solo: <span id="soilHumidity">60</span>%</p>
+          <p>Tipo de Plantação: <span id="plantType"></span></p>
+        </div>
+      </div>
+      <button onclick="toggleIrrigation()">Toggle Irrigação</button>
+    </div>
+    <script src="../script.js"></script>
+  </body>
+</html>
