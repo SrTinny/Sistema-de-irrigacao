@@ -12,3 +12,5 @@ function validateLogin() {
         alert("Login falhou. Tente novamente.");
     }
 }
+
+document.getElementById('loginForm').addEventListener('submit', authenticate);

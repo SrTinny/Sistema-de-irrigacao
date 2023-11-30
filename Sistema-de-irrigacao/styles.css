@@ -1,13 +1,18 @@
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
+  background-image: url("img/background6.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 header {
-  background-color: #42f44e;
-  padding: 10px 0;
+  background-color: #173a19;
+  padding: 20px 0;
   text-align: center;
 }
 
@@ -74,7 +79,7 @@ p {
 
 span {
   font-weight: bold;
-  color: #42f44e;
+  color: #173a19;
 }
 
 hr {
@@ -87,7 +92,7 @@ button {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #42f44e;
+  background-color: #173a19;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -119,11 +124,12 @@ table {
 }
 
 thead {
-  background-color: #42f44e;
+  background-color: #173a19;
   color: #fff;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
@@ -145,7 +151,7 @@ th {
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
-} 
+}
 
 .crop {
   display: flex;
@@ -162,18 +168,7 @@ th {
   border-radius: 8px;
 }
 
-/* Adicionado para tornar o layout mais responsivo */
-@media only screen and (max-width: 600px) {
-  nav ul {
-      display: none;
-      flex-direction: column;
-  }
-
-  nav a {
-      margin-bottom: 10px;
-  }
-
-  .container {
-      max-width: 100%;
-  }
+.sensores {
+  display: flex;
+  justify-content: space-between;
 }
