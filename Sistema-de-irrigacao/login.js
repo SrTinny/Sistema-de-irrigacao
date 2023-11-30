@@ -1,16 +1,20 @@
-function validateLogin() {
+function authenticate(event) {
+    event.preventDefault();
+    // Obter os valores de usuário e senha do formulário
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
+    // Verificar as credenciais e redirecionar conforme necessário
     if (username === "admin" && password === "admin") {
-        // Admin login successful, redirect to the admin irrigation page
-        window.location.href = "pages/irrigacao.html";
+        window.location.href = "../pages/irrigacao.html";
     } else if (username === "client" && password === "client") {
-        // Client login successful, redirect to the client irrigation page
-        window.location.href = "pages/irrigacaoClient.html";
+        window.location.href = "irrigacaoClient.html";
     } else {
-        alert("Login falhou. Tente novamente.");
+        alert("Credenciais inválidas. Tente novamente.");
     }
+
+    // Evitar que o formulário seja enviado
+    return false;
 }
 
 document.getElementById('loginForm').addEventListener('submit', authenticate);

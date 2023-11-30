@@ -43,7 +43,7 @@ nav a {
   max-width: 80%;
   margin: 50px auto;
   text-align: center;
-  background-color: #fff;
+/*   background-color: #fff; */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -140,16 +140,21 @@ th {
 }
 
 .sensor {
-  display: flex;
+  background-color: #fff;
+  text-align: center;
   margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sensor div {
   text-align: left;
 }
 
-.sensor img {
+.sensor img { 
   max-width: 100%;
   height: 200px;
   margin-top: 10px;
-  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
