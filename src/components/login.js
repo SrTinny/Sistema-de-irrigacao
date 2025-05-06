@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import backgroundImage from '../assets/img/background.jpg';  // Caminho para a imagem de fundo
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -6,7 +7,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Verificação simples de login (deve ser substituída por lógica real)
+    // Verificar as credenciais
     if (username === "admin" && password === "admin") {
       window.location.href = "/irrigacao"; // Redireciona após login
     } else {
@@ -15,7 +16,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}>
       <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">Usuário:</label>
