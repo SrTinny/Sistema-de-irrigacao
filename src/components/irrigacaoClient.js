@@ -1,42 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>Sistema de Irrigação</title>
-  </head>
-  <body>
-    <div class="container" style="background-color: #fff;">
-      <h1>Sistema de Irrigação</h1>
-      <div id="status"></div>
-      <div id="monitoring">
-        <div class="card">
-          <p>Consumo de Água: <span id="consumption">0</span> litros</p>
-          <p>Nível de Água: <span id="level">50</span>%</p>
-          <p>Economia de Água: <span id="savings">0</span>%</p>
-        </div>
-        <div class="card">
-          <h2>Sistema de Irrigação</h2>
-          <img
-            src="irrigation_system_image.jpg"
-            alt="Ilustração do Sistema de Irrigação"
-          />
-          <p>
-            Descrição: Este é um modelo básico ilustrativo de um sistema de
-            irrigação.
-          </p>
-          <p>Estado Atual: Ativo</p>
-        </div>
+import React, { useState, useEffect } from 'react';
 
-        <div class="card">
-          <p>Temperatura: <span id="temperature">25</span>°C</p>
-          <p>Umidade do Solo: <span id="soilHumidity">60</span>%</p>
-          <p>Tipo de Plantação: <span id="plantType"></span></p>
+const IrrigacaoClient = () => {
+  const [data, setData] = useState({
+    consumption: 0,
+    level: 50,
+    savings: 0,
+    temperature: 25,
+    soilHumidity: 60,
+    plantType: 'Feijão',
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setData((prevData) => ({
+        ...prevData,
+        consumption: Math.floor(Math.random() * 20) + 1,
+        level: Math.floor(Math.random() * 100) + 1,
+        savings: Math.floor(Math.random() * 50) + 1,
+        temperature: Math.floor(Math.random() * 30) + 12,
+        soilHumidity: Math.floor(Math.random() * 3) + 13,
+      }));
+    }, 1000);
+
+    return () => clearInterval(interval);  // Limpar o intervalo ao desmontar o componente
+  }, []);
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Sistema de Irrigação - Cliente</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <p>Consumo de Água: {data.consumption} litros</p>
+          <p>Nível de Água: {data.level}%</p>
+          <p>Economia de Água: {data.savings}%</p>
+        </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-lg">Status da Irrigação</h2>
+          <p>Temperatura: {data.temperature}°C</p>
+          <p>Umidade do Solo: {data.soilHumidity}%</p>
+          <p>Tipo de Plantação: {data.plantType}</p>
+        </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-lg">Informações Adicionais</h2>
+          <p>Detalhes: O sistema está funcionando para garantir a irrigação das plantas com eficiência.</p>
         </div>
       </div>
-      <button onclick="toggleIrrigation()">Toggle Irrigação</button>
     </div>
-    <script src="../script.js"></script>
-  </body>
-</html>
+  );
+};
+
+export default IrrigacaoClient;

@@ -12,7 +12,6 @@ const Irrigacao = () => {
   });
 
   useEffect(() => {
-    // Simulação de atualização de dados
     const interval = setInterval(() => {
       setData((prevData) => ({
         ...prevData,
@@ -23,7 +22,8 @@ const Irrigacao = () => {
         soilHumidity: Math.floor(Math.random() * 3) + 13,
       }));
     }, 1000);
-    return () => clearInterval(interval);
+
+    return () => clearInterval(interval);  // Limpar o intervalo ao desmontar o componente
   }, []);
 
   const toggleIrrigation = () => {

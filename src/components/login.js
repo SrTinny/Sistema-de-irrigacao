@@ -6,11 +6,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Verificar as credenciais
+    // Verificação simples de login (deve ser substituída por lógica real)
     if (username === "admin" && password === "admin") {
-      window.location.href = "/irrigacao"; // Direciona para a página de irrigação
+      window.location.href = "/irrigacao"; // Redireciona após login
     } else {
-      alert("Credenciais inválidas. Tente novamente.");
+      alert("Credenciais inválidas.");
     }
   };
 
@@ -24,16 +24,13 @@ const Login = () => {
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
-
         <label htmlFor="password">Senha:</label>
         <input
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
         <button type="submit">Entrar</button>
       </form>

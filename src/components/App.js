@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Irrigacao from './Irrigacao'; // Importe o componente Irrigacao
-import Login from './Login';         // Importe o componente Login
-import About from './About';         // Importe o componente About
-import Crops from './Crops';         // Importe o componente Crops
-import Sensors from './Sensors';     // Importe o componente Sensors
-import Material from './Material';   // Importe o componente Material
-import Tasks from './Tasks';         // Importe o componente Tasks
+import Irrigacao from './components/Irrigacao';
+import Login from './components/Login';
+import About from './components/About';
+import Crops from './components/Crops';
+import Sensors from './components/Sensors';
+import Material from './components/Material';
+import Tasks from './components/Tasks';
 
 function App() {
   return (
@@ -22,9 +22,8 @@ function App() {
             <li><a href="/about">Sobre</a></li>
           </ul>
         </nav>
-        
+
         <Switch>
-          {/* Defina as rotas */}
           <Route path="/irrigacao" component={Irrigacao} />
           <Route path="/login" component={Login} />
           <Route path="/about" component={About} />

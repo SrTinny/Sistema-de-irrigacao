@@ -1,48 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>Plantações</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="irrigacao.html">Sistema de Irrigação</a></li>
-          <li><a href="tasks.html">Tarefas</a></li>
-          <li><a href="sensors.html">Sensores</a></li>
-          <li class="active"><a href="crops.html">Plantações</a></li>
-          <li><a href="material.html">Material</a></li>
-          <li><a href="about.html">Sobre</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <h1>Plantações</h1>
+import React from 'react';
 
-      <div class="sensor">
-        <div class="crop">
-          <div>
-            <h2>Feijão</h2>
-            <p>
-              Descrição: O feijão é uma planta leguminosa e uma importante fonte
-              de proteína.
-            </p>
-            <p>Condições Ideais:</p>
-            <ul>
-              <li>Umidade do Solo: Entre 13% e 15%</li>
-              <li>Temperatura Ideal: 21°C</li>
-              <li>Temperatura Mínima: 12°C</li>
-              <li>Temperatura Máxima: 30°C</li>
-            </ul>
-            <p>Condições Atuais:</p>
-          </div>
-          <img src="../img/bean_crop_image.jpg" alt="Plantação de Feijão" />
-        </div>
+const Crops = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Plantações</h1>
+      <div className="card bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 className="text-lg">Feijão</h2>
+        <p>Tipo: Feijão</p>
+        <p>Condição Atual: Pronta para colheita</p>
+        <p>Temperatura ideal: 25°C - 30°C</p>
+        <p>Umidade ideal do solo: 60% - 80%</p>
       </div>
-      
+      <div className="card bg-white p-4 rounded-lg shadow-md">
+        <h2 className="text-lg">Milho</h2>
+        <p>Tipo: Milho</p>
+        <p>Condição Atual: Em crescimento</p>
+        <p>Temperatura ideal: 20°C - 30°C</p>
+        <p>Umidade ideal do solo: 55% - 65%</p>
+      </div>
     </div>
-  </body>
-</html>
+  );
+};
+
+export default Crops;

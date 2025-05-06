@@ -1,69 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles.css">
-    <title>Material</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="irrigacao.html">Sistema de Irrigação</a></li>
-                <li><a href="tasks.html">Tarefas</a></li>
-                <li><a href="sensors.html">Sensores</a></li>
-                <li><a href="crops.html">Plantações</a></li>
-                <li><a href="material.html">Material</a></li>
-                <li><a href="about.html">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <h1>Material Utilizado</h1>
-        <div class="sensores">
-            <div class="sensor">
-              <img src="../img/arduino.jpg" alt="Sensor de Umidade" />
-              <h2>Arduino</h2>
-              <div>
-                
-                <p>Função: Controlador responsável pela </p> 
-                <p>conexão dos sensores e atuadores com o código.</p>
-              </div>
-              
-            </div>
-    
-            <div class="sensor">
-              <img
-                src="../img/bomba.jpg"
-                alt="Sensor de Temperatura"
-                s
-              />
-              <h2>Bomba</h2>
-              <div>
-                
-                <p>Função: Realizar o controle do fluxo de água </p>
-                <p>da caixa para a mangueira</p>
-              </div>
-              
-            </div>
+import React from 'react';
 
-            <div class="sensor">
-              <img src="../img/protoboard.jpg" alt="Sensor de Temperatura" />
-              <h2>Protoboard</h2>
-              <div>
-                
-                <p>Função: Facilitar a montagem do</p>
-                <p>circuito fazendo uma conexão temporária</p>
-                <p>com os componentes eletrônicos</p>
-              </div>
-              
-            </div>
-          </div>
-    
-          
-            
-          
+const Material = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Material Utilizado</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/arduino.jpg" alt="Arduino" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Arduino</h2>
+          <p>Função: Controlador responsável pela conexão dos sensores e atuadores com o código.</p>
+        </div>
+
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/bomba.jpg" alt="Bomba" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Bomba</h2>
+          <p>Função: Controla o fluxo de água da caixa para a mangueira.</p>
+        </div>
+
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/protoboard.jpg" alt="Protoboard" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Protoboard</h2>
+          <p>Função: Facilita a montagem do circuito com conexão temporária dos componentes eletrônicos.</p>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  );
+};
+
+export default Material;

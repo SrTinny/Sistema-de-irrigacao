@@ -1,49 +1,70 @@
-let isIrrigationOn = false;
+import React, { useState, useEffect } from 'react';
 
-function toggleIrrigation() {
-    isIrrigationOn = !isIrrigationOn;
-    updateStatus();
-}
+const Irrigacao = () => {
+  const [isIrrigationOn, setIsIrrigationOn] = useState(false);
+  const [data, setData] = useState({
+    consumption: 0,
+    level: 50,
+    savings: 0,
+    temperature: 25,
+    soilHumidity: 60,
+    plantType: 'Feijão',
+  });
 
-function updateStatus() {
-    const statusElement = document.getElementById('status');
-    if (isIrrigationOn) {
-        statusElement.textContent = 'Irrigação Ligada';
-        statusElement.style.color = 'green';
-    } else {
-        statusElement.textContent = 'Irrigação Desligada';
-        statusElement.style.color = 'red';
-    }
-}
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Simulação de dados de monitoramento
+      const temperature = Math.floor(Math.random() * 30) + 12; // Temperatura simulada
+      const soilHumidity = Math.floor(Math.random() * 3) + 13; // Umidade simulada
 
-function updateMonitoring() {
-    const consumptionElement = document.getElementById('consumption');
-    const levelElement = document.getElementById('level');
-    const savingsElement = document.getElementById('savings');
-    const temperatureElement = document.getElementById('temperature');
-    const soilHumidityElement = document.getElementById('soilHumidity');
-    const plantTypeElement = document.getElementById('plantType');
+      setData((prevData) => ({
+        ...prevData,
+        consumption: Math.floor(Math.random() * 20) + 1,
+        level: Math.floor(Math.random() * 100) + 1,
+        savings: Math.floor(Math.random() * 50) + 1,
+        temperature: temperature,
+        soilHumidity: soilHumidity,
+        plantType:
+          temperature >= 12 && temperature <= 30 && soilHumidity >= 13 && soilHumidity <= 15
+            ? 'Feijão'
+            : 'Condições não ideais para Feijão',
+      }));
+    }, 1000);
 
-    const temperature = Math.floor(Math.random() * 30) + 12; // Simulação de temperatura
-    const soilHumidity = Math.floor(Math.random() * 3) + 13; // Simulação de umidade do solo
+    return () => clearInterval(interval); // Limpar o intervalo quando o componente for desmontado
+  }, []);
 
-    consumptionElement.textContent = Math.floor(Math.random() * 20) + 1; // Simulação de consumo
-    levelElement.textContent = Math.floor(Math.random() * 100) + 1; // Simulação de nível de água
-    savingsElement.textContent = Math.floor(Math.random() * 50) + 1; // Simulação de economia de água
-    temperatureElement.textContent = temperature;
-    soilHumidityElement.textContent = soilHumidity;
+  const toggleIrrigation = () => {
+    setIsIrrigationOn(!isIrrigationOn);
+  };
 
-    if (temperature >= 12 && temperature <= 30 && soilHumidity >= 13 && soilHumidity <= 15) {
-        plantTypeElement.textContent = 'Feijão';
-        plantTypeElement.style.color = 'green';
-    } else {
-        plantTypeElement.textContent = 'Condições não ideais para Feijão';
-        plantTypeElement.style.color = 'red';
-    }
-}
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Sistema de Irrigação</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <p>Consumo de Água: {data.consumption} litros</p>
+          <p>Nível de Água: {data.level}%</p>
+          <p>Economia de Água: {data.savings}%</p>
+        </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-lg">Status da Irrigação</h2>
+          <p>Temperatura: {data.temperature}°C</p>
+          <p>Umidade do Solo: {data.soilHumidity}%</p>
+          <p>Tipo de Plantação: {data.plantType}</p>
+        </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-lg">Controle de Irrigação</h2>
+          <button
+            onClick={toggleIrrigation}
+            className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+          >
+            {isIrrigationOn ? 'Desligar Irrigação' : 'Ligar Irrigação'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-// Atualizar o status e o monitoramento a cada segundo
-setInterval(() => {
-    updateStatus();
-    updateMonitoring();
-}, 1000);
+export default Irrigacao;

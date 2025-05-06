@@ -1,61 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>Sensores</title>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="irrigacao.html">Sistema de Irrigação</a></li>
-          <li><a href="tasks.html">Tarefas</a></li>
-          <li class="active"><a href="sensors.html">Sensores</a></li>
-          <li><a href="crops.html">Plantações</a></li>
-          <li><a href="material.html">Material</a></li>
-          <li><a href="about.html">Sobre</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <h1>Sensores</h1>
+import React from 'react';
 
-      <div class="sensores">
-        <div class="sensor">
-          <img src="../img/humidity_sensor_image.png" alt="Sensor de Umidade" />
-          <h2>Sensor de Umidade</h2>
-          <div>
-            <p>Função: Mede a umidade do solo.</p>
-            <p>Condição Atual: Funcionando normalmente.</p>
-          </div>
+const Sensors = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Sensores</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/humidity_sensor_image.png" alt="Sensor de Umidade" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Sensor de Umidade</h2>
+          <p>Função: Mede a umidade do solo.</p>
+          <p>Condição Atual: Funcionando normalmente.</p>
         </div>
 
-        <div class="sensor">
-          <img
-            src="../img/temperature_sensor_image.png"
-            alt="Sensor de Temperatura"
-            s
-          />
-          <h2>Sensor de Temperatura</h2>
-          <div>
-            <p>Função: Mede a temperatura ambiente.</p>
-            <p>Condição Atual: Funcionando normalmente.</p>
-          </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/temperature_sensor_image.png" alt="Sensor de Temperatura" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Sensor de Temperatura</h2>
+          <p>Função: Mede a temperatura ambiente.</p>
+          <p>Condição Atual: Funcionando normalmente.</p>
         </div>
 
-        <div class="sensor">
-          <img src="../img/nivel_sensor.webp" alt="Sensor de Temperatura" />
-          <h2>Sensor de Nível</h2>
-          <div>
-            <p>Função: Mede o nível da água.</p>
-            <p>Condição Atual: Funcionando normalmente.</p>
-          </div>
+        <div className="card bg-white p-4 rounded-lg shadow-md">
+          <img src="../img/nivel_sensor.webp" alt="Sensor de Nível" className="w-full h-auto mb-4"/>
+          <h2 className="text-lg">Sensor de Nível</h2>
+          <p>Função: Mede o nível da água.</p>
+          <p>Condição Atual: Funcionando normalmente.</p>
         </div>
       </div>
-
-      <div class="sensores"></div>
     </div>
-  </body>
-</html>
+  );
+};
+
+export default Sensors;

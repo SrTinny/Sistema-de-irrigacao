@@ -1,186 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles.css">
-    <title>Tarefas</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="irrigacao.html">Sistema de Irrigação</a></li>
-                <li class="active"><a href="tasks.html">Tarefas</a></li>
-                <li><a href="sensors.html">Sensores</a></li>
-                <li><a href="crops.html">Plantações</a></li>
-                <li><a href="material.html">Material</a></li>
-                <li><a href="about.html">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <h1>Tarefas</h1>
-        <div class="sensor">
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Tarefa</th>
-                        <th>Periódica</th>
-                        <th>Criticidade</th>
-                        <th>Prioridade</th>
-                        <th>Tempo de Computação</th>
-                        <th>Período</th>
-                        <th>Core</th>
-                        <th>Bloqueio</th>
-                        <th>Dependente</th>
-                    </tr>
-                </thead>
-                <!-- ... (código anterior) ... -->
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sensor de Umidade</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Alta</td>
-                        <td>10 ms</td>
-                        <td>100 ms</td>
-                        <td>1</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Temperatura e Umidade</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>15 ms</td>
-                        <td>150 ms</td>
-                        <td>2</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Bomba</td>
-                        <td>Não</td>
-                        <td>Sim</td>
-                        <td>Alta</td>
-                        <td>5 ms</td>
-                        <td>N/A</td>
-                        <td>3</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Status do Arduino</td>
-                        <td>Sim</td>
-                        <td>Não</td>
-                        <td>Baixa</td>
-                        <td>2 ms</td>
-                        <td>200 ms</td>
-                        <td>1</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Sensor de Nível</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>12 ms</td>
-                        <td>120 ms</td>
-                        <td>2</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Envio (Servidor/Arduino)</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>20 ms</td>
-                        <td>200 ms</td>
-                        <td>3</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Recebimento (Servidor/Arduino)</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>18 ms</td>
-                        <td>180 ms</td>
-                        <td>2</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Modo Offline</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Baixa</td>
-                        <td>5 ms</td>
-                        <td>50 ms</td>
-                        <td>1</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Inicialização do Servidor</td>
-                        <td>Não</td>
-                        <td>Sim</td>
-                        <td>Alta</td>
-                        <td>8 ms</td>
-                        <td>N/A</td>
-                        <td>3</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Envio (Sensor/Arduino)</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>15 ms</td>
-                        <td>150 ms</td>
-                        <td>2</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Envio (Tarefa2/Arduino)</td>
-                        <td>Sim</td>
-                        <td>Sim</td>
-                        <td>Média</td>
-                        <td>12 ms</td>
-                        <td>120 ms</td>
-                        <td>1</td>
-                        <td>Não</td>
-                        <td>Não</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        
-    </div>
-</body>
-</html>
+import React from 'react';
 
-        </table>
+const Tasks = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-xl font-bold mb-4">Tarefas</h1>
+      <table className="min-w-full table-auto">
+        <thead>
+          <tr>
+            <th className="border px-4 py-2">#</th>
+            <th className="border px-4 py-2">Tarefa</th>
+            <th className="border px-4 py-2">Periódica</th>
+            <th className="border px-4 py-2">Criticidade</th>
+            <th className="border px-4 py-2">Prioridade</th>
+            <th className="border px-4 py-2">Tempo de Computação</th>
+            <th className="border px-4 py-2">Período</th>
+            <th className="border px-4 py-2">Core</th>
+            <th className="border px-4 py-2">Bloqueio</th>
+            <th className="border px-4 py-2">Dependente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="border px-4 py-2">1</td>
+            <td className="border px-4 py-2">Sensor de Umidade</td>
+            <td className="border px-4 py-2">Sim</td>
+            <td className="border px-4 py-2">Sim</td>
+            <td className="border px-4 py-2">Alta</td>
+            <td className="border px-4 py-2">10 ms</td>
+            <td className="border px-4 py-2">100 ms</td>
+            <td className="border px-4 py-2">1</td>
+            <td className="border px-4 py-2">Não</td>
+            <td className="border px-4 py-2">Não</td>
+          </tr>
+          {/* Adicione mais tarefas conforme necessário */}
+        </tbody>
+      </table>
     </div>
-</body>
-</html>
+  );
+};
+
+export default Tasks;
