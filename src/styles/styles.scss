@@ -1,5 +1,5 @@
-@use './variables' as *;
-@use './mixins' as *;
-@use './base';
-@use './components';
-@use './layout';
+@import './variables';
+@import './mixins';
+@import './base';
+@import './components';
+@import './layout';
