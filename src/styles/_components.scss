@@ -1,0 +1,26 @@
+.button {
+  @include btn;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: $blue-dark;
+  }
+}
+
+.button-green {
+  @include btn;
+  background-color: $green;
+  color: $white;
+
+  &:hover {
+    background-color: $green-dark;
+  }
+}
+
+.input {
+  padding: $spacing-sm;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
