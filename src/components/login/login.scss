@@ -1,0 +1,68 @@
+@import '../../styles/variables'; // Supondo que suas variáveis estejam em _variables.scss
+
+.login-container {
+  min-height: 100vh;
+  background-color: $gray-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  font-family: $font-main;
+}
+
+.login-form {
+  background: $white;
+  padding: $spacing-lg;
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: $gray-dark;
+    margin-bottom: $spacing-md;
+  }
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    color: $gray-dark;
+    font-size: 0.875rem;
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-sm;
+    margin-bottom: $spacing-md;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+  }
+
+  button {
+    width: 100%;
+    background-color: $blue;
+    color: $white;
+    padding: $spacing-sm;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $blue-dark;
+    }
+  }
+}
+
+// Estilos para telas maiores (responsivo)
+@media (min-width: 768px) {
+  .login-form {
+    max-width: 400px;
+    padding: $spacing-lg $spacing-lg * 1.5;
+  }
+}
