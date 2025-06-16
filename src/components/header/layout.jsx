@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import '../styles/layout.scss'; // novo
+import '../../styles/layout.scss'; // novo
 
 const Layout = () => {
   const navigate = useNavigate();
