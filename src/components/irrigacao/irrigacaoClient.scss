@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.painel-container {
+  padding: $spacing-md;
+  background-color: $gray-bg;
+  font-family: $font-main;
+  color: $gray-dark;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    color: $blue-dark;
+  }
+}
+
+.painel-dados {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  .painel-card {
+    background: $white;
+    border-left: 5px solid $green-dark;
+    padding: $spacing-md;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+
+    h2 {
+      font-size: 1.1rem;
+      color: $blue;
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .ativo {
+      color: $green-dark;
+    }
+
+    .inativo {
+      color: red;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// Responsivo para tablets e desktop
+@media (min-width: 600px) {
+  .painel-dados {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .painel-dados {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
