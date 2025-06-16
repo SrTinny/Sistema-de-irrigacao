@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './layout.scss';
 
 const Layout = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,18 +11,30 @@ const Layout = () => {
     navigate('/');
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
     <div className="layout-container">
       <nav className="navbar">
-        <div className="logo">🌿 Sistema de Irrigação</div>
-        <div className="nav-links">
-          <NavLink to="/irrigacao">Irrigação</NavLink>
-          <NavLink to="/sensors">Sensores</NavLink>
-          <NavLink to="/material">Material</NavLink>
-          <NavLink to="/tasks">Tarefas</NavLink>
-          <NavLink to="/crops">Plantações</NavLink>
-          <NavLink to="/about">Sobre</NavLink>
-          <button onClick={handleLogout}>Sair</button>
+        <div className="nav-header">
+          {!isMenuOpen && <div className="logo">🌿 Sistema de Irrigação</div>}
+          <button className="hamburger" onClick={toggleMenu} aria-label="Menu">
+            <span className={isMenuOpen ? 'open' : ''}></span>
+            <span className={isMenuOpen ? 'open' : ''}></span>
+            <span className={isMenuOpen ? 'open' : ''}></span>
+          </button>
+        </div>
+
+        <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+          <NavLink to="/irrigacao" onClick={toggleMenu}>Irrigação</NavLink>
+          <NavLink to="/sensors" onClick={toggleMenu}>Sensores</NavLink>
+          <NavLink to="/material" onClick={toggleMenu}>Material</NavLink>
+          <NavLink to="/tasks" onClick={toggleMenu}>Tarefas</NavLink>
+          <NavLink to="/crops" onClick={toggleMenu}>Plantações</NavLink>
+          <NavLink to="/about" onClick={toggleMenu}>Sobre</NavLink>
+          <button onClick={() => { handleLogout(); toggleMenu(); }}>Sair</button>
         </div>
       </nav>
       <main className="main-content">
