@@ -1,0 +1,83 @@
+@import '../../styles/variables.scss';
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $gray-bg;
+  font-family: $font-main;
+}
+
+.navbar {
+  background-color: $blue;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo {
+    color: $white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: $spacing-sm;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    align-items: center;
+
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: $spacing-sm $spacing-md;
+      border-radius: 0.5rem;
+
+      &.active,
+      &:hover {
+        background-color: $blue-dark;
+      }
+    }
+
+    button {
+      background-color: $green;
+      color: $white;
+      border: none;
+      padding: $spacing-sm $spacing-md;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $green-dark;
+      }
+    }
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-md;
+}
+
+// Responsivo
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .logo {
+      margin-bottom: 0;
+    }
+
+    .nav-links {
+      flex-direction: row;
+    }
+  }
+
+  .main-content {
+    padding: $spacing-lg;
+  }
+}
