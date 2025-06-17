@@ -23,12 +23,11 @@
   gap: $spacing-md;
   grid-template-areas:
     "usage usage next next status temp"
-    "usage usage next next level  temp"
+    "usage usage next next level temp"
     "moisture moisture moisture moisture moisture moisture"
     "moisture moisture moisture moisture moisture moisture"
     "schedule schedule schedule schedule schedule schedule"
-    "schedule schedule schedule schedule schedule schedule"
-  ;
+    "schedule schedule schedule schedule schedule schedule";
 }
 
 .card {
@@ -72,5 +71,6 @@
   .dashboard-grid {
     display: flex;
     flex-direction: column;
+    gap: $spacing-md;
   }
 }

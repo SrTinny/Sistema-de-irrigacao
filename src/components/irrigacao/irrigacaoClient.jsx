@@ -1,5 +1,5 @@
-// Painel de Irrigação com visual moderno estilo dashboard com Grid nomeado
 import React, { useEffect, useState } from 'react';
+import DashboardCard from '../dashBoardCard/dashBoardCard';
 import './irrigacaoClient.scss';
 
 const IrrigacaoClient = () => {
@@ -23,36 +23,45 @@ const IrrigacaoClient = () => {
 
   return (
     <div className="dashboard-container">
-      <h1>Irrigation Dashboard</h1>
+      <h1>Painel de Irrigação</h1>
       <div className="dashboard-grid">
-        <div className="card card-large" style={{ gridArea: 'usage' }}>
-          <h2>Uso de água</h2>
-          <p>{fluxoAgua.toFixed(0)} liters</p>
-        </div>
-        <div className="card" style={{ gridArea: 'status' }}>
-          <h2>Status do Sistema</h2>
-          <p className={statusBomba ? 'ativo' : 'inativo'}>{statusBomba ? 'ACTIVE' : 'INACTIVE'}</p>
-        </div>
-        <div className="card" style={{ gridArea: 'next' }}>
-          <h2>Próxima irrigação</h2>
-          <p>{proximaIrrigacao.toFixed(0)}%</p>
-        </div>
-        <div className="card" style={{ gridArea: 'moisture' }}>
-          <h2>Níveis de umidade ao longo da semana</h2>
-          <p>{umidadeSolo.toFixed(0)}%</p>
-        </div>
-        <div className="card" style={{ gridArea: 'level' }}>
-          <h2>Nível de água</h2>
-          <p>{nivelAgua.toFixed(0)}%</p>
-        </div>
-        <div className="card" style={{ gridArea: 'temp' }}>
-          <h2>Temperature</h2>
-          <p>{temperatura.toFixed(1)} °C</p>
-        </div>
-        <div className="card" style={{ gridArea: 'schedule' }}>
-          <h2>Agenda de Irrigação</h2>
-          <p>Gráfico de barras</p>
-        </div>
+        <DashboardCard
+          title="Uso de água"
+          value={`${fluxoAgua.toFixed(0)} litros`}
+          area="usage"
+          customColor
+        />
+        <DashboardCard
+          title="Status do Sistema"
+          value={statusBomba ? 'ATIVO' : 'INATIVO'}
+          area="status"
+          statusClass={statusBomba ? 'ativo' : 'inativo'}
+        />
+        <DashboardCard
+          title="Próxima irrigação"
+          value={`${proximaIrrigacao.toFixed(0)}%`}
+          area="next"
+        />
+        <DashboardCard
+          title="Umidade do Solo"
+          value={`${umidadeSolo.toFixed(0)}%`}
+          area="moisture"
+        />
+        <DashboardCard
+          title="Nível de água"
+          value={`${nivelAgua.toFixed(0)}%`}
+          area="level"
+        />
+        <DashboardCard
+          title="Temperatura"
+          value={`${temperatura.toFixed(1)} °C`}
+          area="temp"
+        />
+        <DashboardCard
+          title="Agenda de Irrigação"
+          value="Gráfico de barras"
+          area="schedule"
+        />
       </div>
     </div>
   );
