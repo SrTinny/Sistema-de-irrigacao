@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.materiais-container {
+  padding: $spacing-md;
+  background-color: $gray-bg;
+  font-family: $font-main;
+  color: $gray-dark;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    color: $blue-dark;
+  }
+}
+
+.materiais-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  .material-card {
+    background: $white;
+    border-left: 5px solid $blue;
+    padding: $spacing-md;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+
+    h2 {
+      font-size: 1.1rem;
+      color: $green-dark;
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: $gray-dark;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .materiais-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .materiais-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
