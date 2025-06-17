@@ -26,7 +26,7 @@ function App() {
         <Route path="/cliente" element={
           <ProtectedRoute role="client"><IrrigacaoClient /></ProtectedRoute>
         } />
-        <Route path="/irrigacao" element={<ProtectedRoute><Sensors /></ProtectedRoute>} />
+        <Route path="/irrigacao" element={<ProtectedRoute><IrrigacaoClient /></ProtectedRoute>} />
         <Route path="/sensors" element={<ProtectedRoute><Sensors /></ProtectedRoute>} />
         <Route path="/material" element={<ProtectedRoute><Material /></ProtectedRoute>} />
         <Route path="/tasks" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
