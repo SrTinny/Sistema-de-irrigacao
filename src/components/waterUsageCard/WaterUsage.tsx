@@ -29,10 +29,7 @@ const WaterUsage = ({ usage, maxUsage }) => {
           />
         </svg>
         <div className="water-usage__value">
-          <div className="water-usage__value-number">{usage.toLocaleString('pt-BR', {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-          })}</div>
+          <div className="water-usage__value-number">{Math.round(usage)}</div>
           <div className="water-usage__value-unit">liters</div>
         </div>
       </div>

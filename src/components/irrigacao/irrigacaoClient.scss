@@ -126,6 +126,11 @@
   }
 }
 
+.next-irrigation-container {
+  grid-area: next;
+  height: 100%;
+}
+
 // Estilo para os outros cards
 [data-area="next"],
 [data-area="status"],

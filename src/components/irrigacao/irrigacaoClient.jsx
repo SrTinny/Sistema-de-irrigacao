@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import DashboardCard from '../dashBoardCard/dashBoardCard';
 import './irrigacaoClient.scss';
 import WaterUsage from '../waterUsageCard/WaterUsage';
+import NextIrrigationCard from '../nextIrrigationCard/NextIrrigationCard';
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
-  const [fluxoAgua, setFluxoAgua] = useState(4350); // litros
+  const [fluxoAgua, setFluxoAgua] = useState(4350);
   const [temperatura, setTemperatura] = useState(23);
   const [statusBomba, setStatusBomba] = useState(true);
   const [nivelAgua, setNivelAgua] = useState(58);
@@ -23,12 +24,12 @@ const IrrigacaoClient = () => {
 
   useEffect(() => {
     const intervalo = setInterval(() => {
-      setUmidadeSolo((prev) => Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2))));
-      setFluxoAgua((prev) => Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50))));
-      setTemperatura((prev) => Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1))));
-      setNivelAgua((prev) => Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2))));
+      setUmidadeSolo(prev => Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2))));
+      setFluxoAgua(prev => Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50))));
+      setTemperatura(prev => Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1))));
+      setNivelAgua(prev => Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2))));
+      setProximaIrrigacao(prev => Math.max(0, Math.min(100, prev + (Math.random() * 5 - 2.5))));
       
-      // Atualizar dados do gráfico a cada 10 segundos
       if (Math.random() > 0.8) {
         setBarChartData(generateBarChartData());
       }
@@ -45,11 +46,9 @@ const IrrigacaoClient = () => {
           <WaterUsage usage={fluxoAgua} maxUsage={10000} />
         </div>
 
-        <DashboardCard
-          title="Próxima irrigação"
-          value={`${proximaIrrigacao.toFixed(0)}%`}
-          area="next"
-        />
+        <div className="next-irrigation-container">
+          <NextIrrigationCard percentage={proximaIrrigacao} />
+        </div>
         
         <DashboardCard
           title="Status do Sistema"
