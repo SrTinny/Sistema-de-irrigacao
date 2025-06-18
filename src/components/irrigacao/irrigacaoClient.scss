@@ -36,7 +36,7 @@
   padding: $spacing-md;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
-  height: 100%; //tem que ver isso aq
+  height: 100%;
 
   h2 {
     font-size: 1.1rem;
@@ -63,19 +63,12 @@
   }
 }
 
-.card-large {
-  background-color: lighten($blue, 30%);
-}
-
-// Estilos específicos para o componente WaterUsage
 .water-usage-container {
   grid-area: usage;
   height: 100%;
-  
+
   .water-usage {
     height: 100%;
-    display: flex;
-    flex-direction: column;
     background-color: lighten($blue, 35%);
     border-radius: 12px;
     padding: $spacing-md;
@@ -95,11 +88,11 @@
     }
     
     &__circle-container {
-      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      height: 70%; // Ajuste para ocupar mais espaço vertical
     }
     
     &__value {
@@ -128,10 +121,79 @@
       font-size: 0.8rem;
       color: $gray-dark;
       margin-top: 0.5rem;
+      padding: 0 20px;
     }
   }
 }
 
+// Estilo para os outros cards
+[data-area="next"],
+[data-area="status"],
+[data-area="temp"],
+[data-area="level"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  p {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+}
+
+[data-area="moisture"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+}
+
+[data-area="schedule"] {
+  display: flex;
+  flex-direction: column;
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  // Estilo para o gráfico de barras
+  .bar-chart {
+    display: flex;
+    height: 150px;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-top: 20px;
+    
+    .bar {
+      width: 40px;
+      background-color: $blue;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      
+      &::after {
+        content: attr(data-value);
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
 
 // Responsivo
 @media (max-width: 800px) {
@@ -139,9 +201,5 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-md;
-  }
-
-  .water-usage-container {
-    height: 300px;
   }
 }

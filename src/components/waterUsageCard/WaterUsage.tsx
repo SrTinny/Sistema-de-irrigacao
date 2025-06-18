@@ -11,27 +11,28 @@ const WaterUsage = ({ usage, maxUsage }) => {
     <div className="water-usage">
       <div className="water-usage__label">Water Usage</div>
       <div className="water-usage__circle-container">
-        <svg className="water-usage__circle" width="140" height="140" viewBox="0 0 120 120">
+        <svg className="water-usage__circle" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
           <circle 
             className="water-usage__circle-background" 
             cx="60" 
             cy="60" 
             r={radius} 
-            strokeWidth="8"
           />
           <circle
             className="water-usage__circle-progress"
             cx="60"
             cy="60"
             r={radius}
-            strokeWidth="8"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             transform="rotate(-90 60 60)"
           />
         </svg>
         <div className="water-usage__value">
-          <div className="water-usage__value-number">{usage.toLocaleString()}</div>
+          <div className="water-usage__value-number">{usage.toLocaleString('pt-BR', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          })}</div>
           <div className="water-usage__value-unit">liters</div>
         </div>
       </div>

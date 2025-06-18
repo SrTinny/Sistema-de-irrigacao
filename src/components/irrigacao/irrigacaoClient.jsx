@@ -11,12 +11,27 @@ const IrrigacaoClient = () => {
   const [nivelAgua, setNivelAgua] = useState(58);
   const [proximaIrrigacao, setProximaIrrigacao] = useState(58);
 
+  // Gerar dados para o gráfico de barras
+  const generateBarChartData = () => {
+    return Array.from({ length: 7 }, (_, i) => ({
+      day: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][i],
+      value: Math.floor(Math.random() * 100) + 20
+    }));
+  };
+
+  const [barChartData, setBarChartData] = useState(generateBarChartData());
+
   useEffect(() => {
     const intervalo = setInterval(() => {
       setUmidadeSolo((prev) => Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2))));
       setFluxoAgua((prev) => Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50))));
       setTemperatura((prev) => Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1))));
       setNivelAgua((prev) => Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2))));
+      
+      // Atualizar dados do gráfico a cada 10 segundos
+      if (Math.random() > 0.8) {
+        setBarChartData(generateBarChartData());
+      }
     }, 3000);
 
     return () => clearInterval(intervalo);
@@ -29,36 +44,53 @@ const IrrigacaoClient = () => {
         <div className="water-usage-container">
           <WaterUsage usage={fluxoAgua} maxUsage={10000} />
         </div>
+
+        <DashboardCard
+          title="Próxima irrigação"
+          value={`${proximaIrrigacao.toFixed(0)}%`}
+          area="next"
+        />
+        
         <DashboardCard
           title="Status do Sistema"
           value={statusBomba ? 'ATIVO' : 'INATIVO'}
           area="status"
           statusClass={statusBomba ? 'ativo' : 'inativo'}
         />
-        <DashboardCard
-          title="Próxima irrigação"
-          value={`${proximaIrrigacao.toFixed(0)}%`}
-          area="next"
-        />
-        <DashboardCard
-          title="Umidade do Solo"
-          value={`${umidadeSolo.toFixed(0)}%`}
-          area="moisture"
-        />
-        <DashboardCard
-          title="Nível de água"
-          value={`${nivelAgua.toFixed(0)}%`}
-          area="level"
-        />
+        
         <DashboardCard
           title="Temperatura"
           value={`${temperatura.toFixed(1)} °C`}
           area="temp"
         />
+        
+        <DashboardCard
+          title="Nível de água"
+          value={`${nivelAgua.toFixed(0)}%`}
+          area="level"
+        />
+        
+        <DashboardCard
+          title="Umidade do Solo"
+          value={`${umidadeSolo.toFixed(0)}%`}
+          area="moisture"
+        />
+        
         <DashboardCard
           title="Agenda de Irrigação"
-          value="Gráfico de barras"
           area="schedule"
+          customContent={
+            <div className="bar-chart">
+              {barChartData.map((bar, index) => (
+                <div 
+                  key={index} 
+                  className="bar" 
+                  style={{ height: `${bar.value}px` }}
+                  data-value={bar.day}
+                />
+              ))}
+            </div>
+          }
         />
       </div>
     </div>

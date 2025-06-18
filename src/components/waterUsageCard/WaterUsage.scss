@@ -6,12 +6,19 @@
   &__circle-background {
     fill: none;
     stroke: #e0e7ff;
+    stroke-width: 8;
   }
 
   &__circle-progress {
     fill: none;
     stroke: #3b82f6;
+    stroke-width: 8;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.8s ease-out;
+  }
+  
+  &__circle {
+    width: 160px;
+    height: 160px;
   }
 }
