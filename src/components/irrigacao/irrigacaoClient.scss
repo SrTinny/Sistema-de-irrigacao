@@ -131,6 +131,11 @@
   height: 100%;
 }
 
+.system-status-container {
+  grid-area: status;
+  height: 100%;
+}
+
 // Estilo para os outros cards
 [data-area="next"],
 [data-area="status"],

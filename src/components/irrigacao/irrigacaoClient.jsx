@@ -3,6 +3,8 @@ import DashboardCard from '../dashBoardCard/dashBoardCard';
 import './irrigacaoClient.scss';
 import WaterUsage from '../waterUsageCard/WaterUsage';
 import NextIrrigationCard from '../nextIrrigationCard/NextIrrigationCard';
+import SystemStatusCard from '../systemStatusCard/SystemStatusCard'; 
+
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
@@ -49,14 +51,11 @@ const IrrigacaoClient = () => {
         <div className="next-irrigation-container">
           <NextIrrigationCard percentage={proximaIrrigacao} />
         </div>
-        
-        <DashboardCard
-          title="Status do Sistema"
-          value={statusBomba ? 'ATIVO' : 'INATIVO'}
-          area="status"
-          statusClass={statusBomba ? 'ativo' : 'inativo'}
-        />
-        
+
+        <div className="system-status-container">
+          <SystemStatusCard isActive={statusBomba} />
+        </div>
+
         <DashboardCard
           title="Temperatura"
           value={`${temperatura.toFixed(1)} °C`}
