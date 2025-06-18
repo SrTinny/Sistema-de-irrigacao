@@ -4,8 +4,8 @@
 .dashboard-container {
   background-color: $gray-bg;
   color: $gray-dark;
-  height: 100vh; // Ocupa altura total da viewport
-  width: 95vw;  // Ocupa largura total da viewport
+  height: 100vh;
+  width: 96vw; // Corrigido para 100vw (view width)
   margin: 0;
   padding: $spacing-lg;
   font-family: $font-main;
@@ -19,7 +19,7 @@
     font-size: 2rem;
     color: $blue-dark;
     margin-bottom: $spacing-lg;
-    flex-shrink: 0; // Impede que o título encolha
+    flex-shrink: 0;
   }
 }
 
@@ -35,27 +35,27 @@
     "moisture moisture moisture moisture moisture moisture"
     "schedule schedule schedule schedule schedule schedule"
     "schedule schedule schedule schedule schedule schedule";
-  flex: 1; // Ocupa todo o espaço restante
-  min-height: 0; // Corrige overflow no grid
+  flex: 1;
+  min-height: 0;
 }
 
 .card {
   background-color: $white;
-  border-radius: 12px;
+  border-radius: $border-radius-lg;
   padding: $spacing-md;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: $shadow-card;
+  transition: transform $transition-normal;
   height: 100%;
 
   h2 {
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: $spacing-sm;
     color: $blue-dark;
   }
 
   p {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: $font-bold;
     color: $gray-dark;
   }
 
@@ -64,11 +64,11 @@
   }
 
   .inativo {
-    color: #ff4444;
+    color: $red;
   }
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-0.25rem); // -4px convertido
   }
 }
 
@@ -79,21 +79,21 @@
   .water-usage {
     height: 100%;
     background-color: lighten($blue, 35%);
-    border-radius: 12px;
+    border-radius: $border-radius-lg;
     padding: $spacing-md;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    box-shadow: $shadow-card;
+    transition: transform $transition-normal;
     
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-0.25rem);
     }
     
     &__label {
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: $spacing-sm;
       color: $blue-dark;
       text-align: center;
-      font-weight: bold;
+      font-weight: $font-bold;
     }
     
     &__circle-container {
@@ -101,7 +101,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      height: 70%; // Ajuste para ocupar mais espaço vertical
+      height: 70%;
     }
     
     &__value {
@@ -113,7 +113,7 @@
       
       &-number {
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: $font-bold;
         color: $blue-dark;
       }
       
@@ -129,8 +129,8 @@
       width: 100%;
       font-size: 0.8rem;
       color: $gray-dark;
-      margin-top: 0.5rem;
-      padding: 0 20px;
+      margin-top: $spacing-sm;
+      padding: 0 $spacing-lg; // 20px convertido
     }
   }
 }
@@ -157,7 +157,7 @@
   
   p {
     font-size: 2rem;
-    margin-top: 10px;
+    margin-top: 0.625rem; // 10px convertido
   }
 }
 
@@ -174,7 +174,7 @@
   
   p {
     font-size: 3rem;
-    font-weight: bold;
+    font-weight: $font-bold;
   }
 }
 
@@ -191,21 +191,21 @@
   // Estilo para o gráfico de barras
   .bar-chart {
     display: flex;
-    height: 150px;
+    height: 9.375rem; // 150px convertido
     align-items: flex-end;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 1.25rem; // 20px convertido
     
     .bar {
-      width: 40px;
+      width: 2.5rem; // 40px convertido
       background-color: $blue;
-      border-radius: 4px 4px 0 0;
+      border-radius: $border-radius-sm $border-radius-sm 0 0;
       position: relative;
       
       &::after {
         content: attr(data-value);
         position: absolute;
-        bottom: -25px;
+        bottom: -1.5625rem; // -25px convertido
         left: 50%;
         transform: translateX(-50%);
         font-size: 0.8rem;
@@ -215,7 +215,7 @@
 }
 
 // Responsivo
-@media (max-width: 800px) {
+@media (max-width: $breakpoint-md) { // 800px convertido para breakpoint
   .dashboard-grid {
     display: flex;
     flex-direction: column;

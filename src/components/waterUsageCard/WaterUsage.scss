@@ -1,3 +1,7 @@
+/* water-usage.scss */
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 .water-usage {
   display: flex;
   flex-direction: column;
@@ -5,20 +9,113 @@
 
   &__circle-background {
     fill: none;
-    stroke: #e0e7ff;
+    stroke: $blue-light;
     stroke-width: 8;
   }
 
   &__circle-progress {
     fill: none;
-    stroke: #3b82f6;
+    stroke: $blue;
     stroke-width: 8;
     stroke-linecap: round;
-    transition: stroke-dashoffset 0.8s ease-out;
+    transition: stroke-dashoffset $transition-slow;
   }
   
   &__circle {
-    width: 160px;
-    height: 160px;
+    width: 10rem; // 160px
+    height: 10rem;
+  }
+}
+
+/* next-irrigation-card.scss */
+.next-irrigation-card {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-md;
+    
+    h2 {
+      font-size: 1.1rem;
+      color: $blue-dark;
+      font-weight: $font-bold;
+      margin: 0;
+    }
+  }
+
+  &__progress {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__circle {
+    width: 7.5rem; // 120px
+    height: 7.5rem;
+    
+    &-background {
+      fill: none;
+      stroke: $blue-light;
+      stroke-width: 8;
+    }
+    
+    &-progress {
+      fill: none;
+      stroke: $blue;
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset $transition-slow;
+    }
+  }
+
+  &__value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    span {
+      font-size: 1.5rem; // 24px
+      font-weight: $font-bold;
+      color: $blue-dark;
+      display: block;
+    }
+  }
+
+  &__time {
+    font-size: 0.875rem; // 14px
+    color: $gray-medium;
+    margin-top: 0.3125rem; // 5px
+  }
+
+  &__info {
+    margin-top: $spacing-sm;
+    border-top: 1px solid $gray-light;
+    padding-top: $spacing-sm;
+    
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3125rem; // 5px
+      font-size: 0.9rem;
+      
+      span:first-child {
+        color: $gray-medium;
+      }
+      
+      span:last-child {
+        color: $gray-dark;
+        font-weight: $font-semibold;
+      }
+    }
   }
 }

@@ -1,20 +1,23 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 .next-irrigation-card {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-card;
   height: 100%;
   display: flex;
   flex-direction: column;
 
   &__header {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: $spacing-md;
     
     h2 {
       font-size: 1.1rem;
-      color: #2c3e50;
-      font-weight: bold;
+      color: $blue-dark;
+      font-weight: $font-bold;
       margin: 0;
     }
   }
@@ -28,21 +31,21 @@
   }
 
   &__circle {
-    width: 120px;
-    height: 120px;
+    width: 7.5rem; // 120px
+    height: 7.5rem;
     
     &-background {
       fill: none;
-      stroke: #e0f2fe;
+      stroke: $blue-light;
       stroke-width: 8;
     }
     
     &-progress {
       fill: none;
-      stroke: #0ea5e9;
+      stroke: $blue;
       stroke-width: 8;
       stroke-linecap: round;
-      transition: stroke-dashoffset 0.8s ease-out;
+      transition: stroke-dashoffset $transition-slow;
     }
   }
 
@@ -54,37 +57,37 @@
     text-align: center;
     
     span {
-      font-size: 24px;
-      font-weight: bold;
-      color: #0c4a6e;
+      font-size: 1.5rem; // 24px
+      font-weight: $font-bold;
+      color: $blue-dark;
       display: block;
     }
   }
 
   &__time {
-    font-size: 14px;
-    color: #64748b;
-    margin-top: 5px;
+    font-size: 0.875rem; // 14px
+    color: $gray-medium;
+    margin-top: 0.3125rem; // 5px
   }
 
   &__info {
-    margin-top: 10px;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 10px;
+    margin-top: $spacing-sm;
+    border-top: 1px solid $gray-light;
+    padding-top: $spacing-sm;
     
     &-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 0.3125rem; // 5px
       font-size: 0.9rem;
       
       span:first-child {
-        color: #64748b;
+        color: $gray-medium;
       }
       
       span:last-child {
-        color: #1e293b;
-        font-weight: 500;
+        color: $gray-dark;
+        font-weight: $font-semibold;
       }
     }
   }
