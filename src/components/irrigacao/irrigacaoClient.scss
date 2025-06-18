@@ -4,15 +4,22 @@
 .dashboard-container {
   background-color: $gray-bg;
   color: $gray-dark;
-  min-height: 100vh;
+  height: 100vh; // Ocupa altura total da viewport
+  width: 95vw;  // Ocupa largura total da viewport
+  margin: 0;
   padding: $spacing-lg;
   font-family: $font-main;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   h1 {
     text-align: center;
     font-size: 2rem;
     color: $blue-dark;
     margin-bottom: $spacing-lg;
+    flex-shrink: 0; // Impede que o título encolha
   }
 }
 
@@ -28,6 +35,8 @@
     "moisture moisture moisture moisture moisture moisture"
     "schedule schedule schedule schedule schedule schedule"
     "schedule schedule schedule schedule schedule schedule";
+  flex: 1; // Ocupa todo o espaço restante
+  min-height: 0; // Corrige overflow no grid
 }
 
 .card {

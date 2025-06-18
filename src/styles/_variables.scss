@@ -1,17 +1,62 @@
-// Cores suaves e modernas
+// Cores principais
 $blue: #4fa8ff;
 $blue-dark: #3c78b4;
+$blue-light: #e1f0ff;
 $green: #78e0a3;
 $green-dark: #4caf83;
+$red: #ff6b6b;
+$red-dark: #e74c3c;
 
-$gray-bg: #0c1b2a;      // Fundo escuro do dashboard
-$gray-dark: #112b3c;    // Cards e elementos de destaque
-$white: #ffffff;
+// Escala de cinza
+$gray-bg: #0c1b2a;          // Fundo escuro do dashboard
+$gray-dark: #112b3c;        // Textos principais
+$gray-medium: #7f8c8d;      // Textos secundários
+$gray-light: #ecf0f1;       // Bordas e divisores
+$white: #ffffff;            // Fundo de cards e textos claros
+
+// Cores de status
+$active-color: $green;
+$inactive-color: $red;
+$warning-color: #ffcc00;
 
 // Tipografia
-$font-main: 'Segoe UI', sans-serif;
+$font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-bold: 700;
+$font-semibold: 600;
+$font-normal: 400;
 
 // Espaçamentos
+$spacing-xs: 0.25rem;
 $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
-$spacing-lg: 2rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-xxl: 3rem;
+
+// Bordas
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Sombras
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+// Breakpoints para responsividade
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Transições
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index
+$z-index-low: 10;
+$z-index-medium: 100;
+$z-index-high: 1000;
