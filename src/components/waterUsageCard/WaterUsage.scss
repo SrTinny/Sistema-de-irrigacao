@@ -1,0 +1,17 @@
+.water-usage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__circle-background {
+    fill: none;
+    stroke: #e0e7ff;
+  }
+
+  &__circle-progress {
+    fill: none;
+    stroke: #3b82f6;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease-out;
+  }
+}

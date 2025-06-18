@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DashboardCard from '../dashBoardCard/dashBoardCard';
 import './irrigacaoClient.scss';
+import WaterUsage from '../waterUsageCard/WaterUsage';
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
@@ -25,12 +26,9 @@ const IrrigacaoClient = () => {
     <div className="dashboard-container">
       <h1>Painel de Irrigação</h1>
       <div className="dashboard-grid">
-        <DashboardCard
-          title="Uso de água"
-          value={`${fluxoAgua.toFixed(0)} litros`}
-          area="usage"
-          customColor
-        />
+        <div className="water-usage-container">
+          <WaterUsage usage={fluxoAgua} maxUsage={10000} />
+        </div>
         <DashboardCard
           title="Status do Sistema"
           value={statusBomba ? 'ATIVO' : 'INATIVO'}

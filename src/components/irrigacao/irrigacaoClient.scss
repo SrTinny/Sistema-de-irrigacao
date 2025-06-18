@@ -36,6 +36,7 @@
   padding: $spacing-md;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  height: 100%; //tem que ver isso aq
 
   h2 {
     font-size: 1.1rem;
@@ -66,11 +67,81 @@
   background-color: lighten($blue, 30%);
 }
 
+// Estilos específicos para o componente WaterUsage
+.water-usage-container {
+  grid-area: usage;
+  height: 100%;
+  
+  .water-usage {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: lighten($blue, 35%);
+    border-radius: 12px;
+    padding: $spacing-md;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+    
+    &__label {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: $blue-dark;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    &__circle-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    &__value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      
+      &-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $blue-dark;
+      }
+      
+      &-unit {
+        font-size: 1rem;
+        color: $gray-dark;
+      }
+    }
+    
+    &__range {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 0.8rem;
+      color: $gray-dark;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+
 // Responsivo
 @media (max-width: 800px) {
   .dashboard-grid {
     display: flex;
     flex-direction: column;
     gap: $spacing-md;
+  }
+
+  .water-usage-container {
+    height: 300px;
   }
 }
