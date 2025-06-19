@@ -5,6 +5,7 @@ import WaterUsage from "../waterUsageCard/WaterUsage";
 import NextIrrigationCard from "../nextIrrigationCard/NextIrrigationCard";
 import SystemStatusCard from "../systemStatusCard/SystemStatusCard";
 import Thermometer from "../thermometer/Thermometer";
+import WaterLevel from "../waterLevel/WaterLevel";
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
@@ -61,10 +62,6 @@ const IrrigacaoClient = () => {
           <NextIrrigationCard percentage={proximaIrrigacao} />
         </div>
 
-        <div className="system-status-container" data-area="status">
-          <SystemStatusCard isActive={statusBomba} />
-        </div>
-
         <div className="temperature-container" data-area="temp">
           <DashboardCard
             title="Temperatura"
@@ -72,10 +69,14 @@ const IrrigacaoClient = () => {
           />
         </div>
 
+        <div className="system-status-container" data-area="status">
+          <SystemStatusCard isActive={statusBomba} />
+        </div>
+
         <div className="level-container" data-area="level">
           <DashboardCard
             title="Nível de água"
-            value={`${nivelAgua.toFixed(0)}%`}
+            customContent={<WaterLevel level={nivelAgua} />}
           />
         </div>
 

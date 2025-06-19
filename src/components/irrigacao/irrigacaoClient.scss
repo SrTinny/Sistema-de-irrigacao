@@ -1,5 +1,4 @@
 @import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
 
 .dashboard-container {
   background-color: $gray-bg;
@@ -25,14 +24,18 @@
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: auto auto 1fr;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
   gap: $spacing-md;
   grid-template-areas:
-    "usage usage next next temp status"
-    "usage usage next next temp level"
-    "schedule schedule schedule schedule schedule moisture"
-    "schedule schedule schedule schedule schedule moisture";
+    "usage usage usage usage next next level level status status temp temp"
+    "usage usage usage usage next next level level status status temp temp"
+    "usage usage usage usage next next level level status status temp temp"
+    "usage usage usage usage next next level level status status temp temp"
+    "schedule schedule schedule schedule schedule schedule schedule schedule moisture moisture moisture moisture"
+    "schedule schedule schedule schedule schedule schedule schedule schedule moisture moisture moisture moisture"
+    "schedule schedule schedule schedule schedule schedule schedule schedule moisture moisture moisture moisture"
+    "schedule schedule schedule schedule schedule schedule schedule schedule moisture moisture moisture moisture";
   height: calc(100vh - 120px);
   flex: 1;
   min-height: 0;
@@ -108,15 +111,15 @@
 }
 
 // Estilos para cards específicos
-[data-area="level"],
 [data-area="moisture"] {
   .card {
     justify-content: center;
     align-items: center;
     
     p {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       margin-top: 0;
+      color: $blue;
     }
   }
 }
@@ -157,6 +160,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+[data-area="level"] {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h2 {
+      margin-bottom: $spacing-sm;
+    }
+    
+    .water-level {
+      width: 100%;
+      height: 100%;
+      padding: $spacing-sm 0;
+    }
   }
 }
 
@@ -227,5 +249,12 @@
       margin-top: $spacing-sm;
       padding: 0 $spacing-lg;
     }
+  }
+}
+
+// Estilo para o container de status do sistema
+.system-status-container {
+  .system-status-card {
+    height: 100%;
   }
 }
