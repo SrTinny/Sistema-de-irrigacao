@@ -1,0 +1,62 @@
+@import '../../styles/variables.scss';
+
+.thermometer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  &__scale {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem;
+    color: $gray-medium;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__container {
+    position: relative;
+    height: 12rem; // Altura do termômetro
+    width: 2.5rem; // Largura do termômetro
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__glass {
+    width: 1.25rem; // Largura do tubo
+    height: 100%;
+    background-color: $gray-light;
+    border-radius: 0.625rem 0.625rem 0 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  &__fill {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.5s ease, background-color 0.5s ease;
+    border-radius: 0.625rem 0.625rem 0 0;
+  }
+
+  &__bulb {
+    width: 2.5rem; // Largura do bulbo
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: $red;
+    margin-top: -1.25rem; // Sobreposição com o tubo
+    z-index: 2;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  }
+
+  &__value {
+    margin-top: $spacing-sm;
+    font-size: 1.5rem;
+    font-weight: $font-bold;
+    color: $gray-dark;
+  }
+}

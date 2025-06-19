@@ -214,6 +214,21 @@
   }
 }
 
+// Adicione isso no final do arquivo
+[data-area="temp"] {
+  .card-custom-content {
+    padding: $spacing-sm 0;
+    
+    // Ajustes específicos para o termômetro
+    .thermometer {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
 // Responsivo
 @media (max-width: $breakpoint-md) { // 800px convertido para breakpoint
   .dashboard-grid {

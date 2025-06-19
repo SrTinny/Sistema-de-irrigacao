@@ -1,23 +1,28 @@
 @import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
 
 .card {
   background-color: $white;
-  border-radius: 12px;
+  border-radius: $border-radius-lg;
   padding: $spacing-md;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: $shadow-card;
+  transition: transform $transition-normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: $spacing-sm;
     color: $blue-dark;
+    flex-shrink: 0;
   }
 
   p {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: $font-bold;
     color: $gray-dark;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .ativo {
@@ -25,14 +30,27 @@
   }
 
   .inativo {
-    color: #ff4444;
+    color: $red;
   }
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-0.25rem);
   }
-}
 
-.card-large {
-  background-color: lighten($blue, 30%);
+  &-large {
+    background-color: lighten($blue, 30%);
+  }
+
+  &-custom-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0; // Importante para conteúdo responsivo
+    
+    > * {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

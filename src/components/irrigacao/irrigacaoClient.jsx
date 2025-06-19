@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import DashboardCard from '../dashBoardCard/dashBoardCard';
-import './irrigacaoClient.scss';
-import WaterUsage from '../waterUsageCard/WaterUsage';
-import NextIrrigationCard from '../nextIrrigationCard/NextIrrigationCard';
-import SystemStatusCard from '../systemStatusCard/SystemStatusCard'; 
-
+import React, { useEffect, useState } from "react";
+import DashboardCard from "../dashBoardCard/dashBoardCard";
+import "./irrigacaoClient.scss";
+import WaterUsage from "../waterUsageCard/WaterUsage";
+import NextIrrigationCard from "../nextIrrigationCard/NextIrrigationCard";
+import SystemStatusCard from "../systemStatusCard/SystemStatusCard";
+import Thermometer from "../thermometer/Thermometer"; // Importa o termômetro
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
@@ -17,8 +17,8 @@ const IrrigacaoClient = () => {
   // Gerar dados para o gráfico de barras
   const generateBarChartData = () => {
     return Array.from({ length: 7 }, (_, i) => ({
-      day: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][i],
-      value: Math.floor(Math.random() * 100) + 20
+      day: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"][i],
+      value: Math.floor(Math.random() * 100) + 20,
     }));
   };
 
@@ -26,12 +26,22 @@ const IrrigacaoClient = () => {
 
   useEffect(() => {
     const intervalo = setInterval(() => {
-      setUmidadeSolo(prev => Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2))));
-      setFluxoAgua(prev => Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50))));
-      setTemperatura(prev => Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1))));
-      setNivelAgua(prev => Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2))));
-      setProximaIrrigacao(prev => Math.max(0, Math.min(100, prev + (Math.random() * 5 - 2.5))));
-      
+      setUmidadeSolo((prev) =>
+        Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2)))
+      );
+      setFluxoAgua((prev) =>
+        Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50)))
+      );
+      setTemperatura((prev) =>
+        Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1)))
+      );
+      setNivelAgua((prev) =>
+        Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2)))
+      );
+      setProximaIrrigacao((prev) =>
+        Math.max(0, Math.min(100, prev + (Math.random() * 5 - 2.5)))
+      );
+
       if (Math.random() > 0.8) {
         setBarChartData(generateBarChartData());
       }
@@ -58,31 +68,31 @@ const IrrigacaoClient = () => {
 
         <DashboardCard
           title="Temperatura"
-          value={`${temperatura.toFixed(1)} °C`}
           area="temp"
+          customContent={<Thermometer temperature={temperatura} />}
         />
-        
+
         <DashboardCard
           title="Nível de água"
           value={`${nivelAgua.toFixed(0)}%`}
           area="level"
         />
-        
+
         <DashboardCard
           title="Umidade do Solo"
           value={`${umidadeSolo.toFixed(0)}%`}
           area="moisture"
         />
-        
+
         <DashboardCard
           title="Agenda de Irrigação"
           area="schedule"
           customContent={
             <div className="bar-chart">
               {barChartData.map((bar, index) => (
-                <div 
-                  key={index} 
-                  className="bar" 
+                <div
+                  key={index}
+                  className="bar"
                   style={{ height: `${bar.value}px` }}
                   data-value={bar.day}
                 />
