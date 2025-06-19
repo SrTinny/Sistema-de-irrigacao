@@ -29,10 +29,10 @@
   grid-template-rows: auto auto 1fr;
   gap: $spacing-md;
   grid-template-areas:
-    "usage usage next next status temp"
-    "usage usage next next level temp"
-    "moisture moisture moisture moisture moisture moisture"
-    "schedule schedule schedule schedule schedule schedule";
+    "usage usage next next temp status"
+    "usage usage next next temp level"
+    "schedule schedule schedule schedule schedule moisture"
+    "schedule schedule schedule schedule schedule moisture";
   height: calc(100vh - 120px);
   flex: 1;
   min-height: 0;
