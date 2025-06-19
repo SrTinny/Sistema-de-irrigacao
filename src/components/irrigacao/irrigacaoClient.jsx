@@ -6,6 +6,7 @@ import NextIrrigationCard from "../nextIrrigationCard/NextIrrigationCard";
 import SystemStatusCard from "../systemStatusCard/SystemStatusCard";
 import Thermometer from "../thermometer/Thermometer";
 import WaterLevel from "../waterLevel/WaterLevel";
+import SoilMoisture from "../soilMoisture/SoilMoisture";
 
 const IrrigacaoClient = () => {
   const [umidadeSolo, setUmidadeSolo] = useState(72);
@@ -83,7 +84,7 @@ const IrrigacaoClient = () => {
         <div className="moisture-container" data-area="moisture">
           <DashboardCard
             title="Umidade do Solo"
-            value={`${umidadeSolo.toFixed(0)}%`}
+            customContent={<SoilMoisture moisture={umidadeSolo} />}
           />
         </div>
 

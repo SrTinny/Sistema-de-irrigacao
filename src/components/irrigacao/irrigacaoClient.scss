@@ -258,3 +258,20 @@
     height: 100%;
   }
 }
+
+[data-area="moisture"] {
+  .card {
+    padding: 0; // Removemos o padding para o componente ocupar todo o espaço
+    
+    h2 {
+      padding: $spacing-md;
+      margin-bottom: 0;
+      border-bottom: 1px solid $gray-light;
+    }
+    
+    .soil-moisture {
+      height: calc(100% - 3rem); // Altura total menos o espaço do título
+      padding: $spacing-md;
+    }
+  }
+}
