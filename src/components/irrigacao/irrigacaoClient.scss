@@ -5,7 +5,7 @@
   background-color: $gray-bg;
   color: $gray-dark;
   height: 100vh;
-  width: 96vw; // Corrigido para 100vw (view width)
+  width: 96vw;
   margin: 0;
   padding: $spacing-lg;
   font-family: $font-main;
@@ -26,19 +26,19 @@
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: auto auto 1fr;
   gap: $spacing-md;
   grid-template-areas:
     "usage usage next next status temp"
     "usage usage next next level temp"
     "moisture moisture moisture moisture moisture moisture"
-    "moisture moisture moisture moisture moisture moisture"
-    "schedule schedule schedule schedule schedule schedule"
     "schedule schedule schedule schedule schedule schedule";
+  height: calc(100vh - 120px);
   flex: 1;
   min-height: 0;
 }
 
+// Estilos gerais para cards
 .card {
   background-color: $white;
   border-radius: $border-radius-lg;
@@ -46,6 +46,8 @@
   box-shadow: $shadow-card;
   transition: transform $transition-normal;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     font-size: 1.1rem;
@@ -68,14 +70,107 @@
   }
 
   &:hover {
-    transform: translateY(-0.25rem); // -4px convertido
+    transform: translateY(-0.25rem);
   }
 }
 
-.water-usage-container {
-  grid-area: usage;
+// Áreas específicas
+[data-area] {
   height: 100%;
+}
 
+[data-area="usage"] {
+  grid-area: usage;
+}
+
+[data-area="next"] {
+  grid-area: next;
+}
+
+[data-area="status"] {
+  grid-area: status;
+}
+
+[data-area="temp"] {
+  grid-area: temp;
+}
+
+[data-area="level"] {
+  grid-area: level;
+}
+
+[data-area="moisture"] {
+  grid-area: moisture;
+}
+
+[data-area="schedule"] {
+  grid-area: schedule;
+}
+
+// Estilos para cards específicos
+[data-area="level"],
+[data-area="moisture"] {
+  .card {
+    justify-content: center;
+    align-items: center;
+    
+    p {
+      font-size: 2.5rem;
+      margin-top: 0;
+    }
+  }
+}
+
+[data-area="schedule"] {
+  .card {
+    .bar-chart {
+      display: flex;
+      height: 120px;
+      align-items: flex-end;
+      justify-content: space-around;
+      margin-top: 1.25rem;
+      
+      .bar {
+        width: 2.5rem;
+        background-color: $blue;
+        border-radius: $border-radius-sm $border-radius-sm 0 0;
+        position: relative;
+        
+        &::after {
+          content: attr(data-value);
+          position: absolute;
+          bottom: -1.5625rem;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Estilos para o termômetro
+[data-area="temp"] {
+  .card-custom-content {
+    padding: $spacing-sm 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Responsividade
+@media (max-width: $breakpoint-md) {
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+}
+
+// Estilo para o container de uso de água
+.water-usage-container {
   .water-usage {
     height: 100%;
     background-color: lighten($blue, 35%);
@@ -130,110 +225,7 @@
       font-size: 0.8rem;
       color: $gray-dark;
       margin-top: $spacing-sm;
-      padding: 0 $spacing-lg; // 20px convertido
+      padding: 0 $spacing-lg;
     }
-  }
-}
-
-.next-irrigation-container {
-  grid-area: next;
-  height: 100%;
-}
-
-.system-status-container {
-  grid-area: status;
-  height: 100%;
-}
-
-// Estilo para os outros cards
-[data-area="next"],
-[data-area="status"],
-[data-area="temp"],
-[data-area="level"] {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  p {
-    font-size: 2rem;
-    margin-top: 0.625rem; // 10px convertido
-  }
-}
-
-[data-area="moisture"] {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  p {
-    font-size: 3rem;
-    font-weight: $font-bold;
-  }
-}
-
-[data-area="schedule"] {
-  display: flex;
-  flex-direction: column;
-  
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  // Estilo para o gráfico de barras
-  .bar-chart {
-    display: flex;
-    height: 9.375rem; // 150px convertido
-    align-items: flex-end;
-    justify-content: space-around;
-    margin-top: 1.25rem; // 20px convertido
-    
-    .bar {
-      width: 2.5rem; // 40px convertido
-      background-color: $blue;
-      border-radius: $border-radius-sm $border-radius-sm 0 0;
-      position: relative;
-      
-      &::after {
-        content: attr(data-value);
-        position: absolute;
-        bottom: -1.5625rem; // -25px convertido
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.8rem;
-      }
-    }
-  }
-}
-
-// Adicione isso no final do arquivo
-[data-area="temp"] {
-  .card-custom-content {
-    padding: $spacing-sm 0;
-    
-    // Ajustes específicos para o termômetro
-    .thermometer {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-}
-
-// Responsivo
-@media (max-width: $breakpoint-md) { // 800px convertido para breakpoint
-  .dashboard-grid {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
   }
 }
