@@ -7,84 +7,85 @@ import SystemStatusCard from "../systemStatusCard/SystemStatusCard";
 import Thermometer from "../thermometer/Thermometer";
 import WaterLevel from "../waterLevel/WaterLevel";
 import SoilMoisture from "../soilMoisture/SoilMoisture";
+import { getDashboardData } from '../../service/api'
 
 const IrrigacaoClient = () => {
-  const [umidadeSolo, setUmidadeSolo] = useState(72);
-  const [fluxoAgua, setFluxoAgua] = useState(4350);
-  const [temperatura, setTemperatura] = useState(23);
-  const [statusBomba, setStatusBomba] = useState(true);
-  const [nivelAgua, setNivelAgua] = useState(58);
-  const [proximaIrrigacao, setProximaIrrigacao] = useState(58);
-
-  const generateBarChartData = () => {
-    return Array.from({ length: 7 }, (_, i) => ({
-      day: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"][i],
-      value: Math.floor(Math.random() * 100) + 20,
-    }));
-  };
-
-  const [barChartData, setBarChartData] = useState(generateBarChartData());
+  const [dashboardData, setDashboardData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const intervalo = setInterval(() => {
-      setUmidadeSolo((prev) =>
-        Math.max(20, Math.min(100, prev + (Math.random() * 4 - 2)))
-      );
-      setFluxoAgua((prev) =>
-        Math.max(0, Math.min(10000, prev + (Math.random() * 100 - 50)))
-      );
-      setTemperatura((prev) =>
-        Math.max(15, Math.min(40, prev + (Math.random() * 2 - 1)))
-      );
-      setNivelAgua((prev) =>
-        Math.max(0, Math.min(100, prev + (Math.random() * 4 - 2)))
-      );
-      setProximaIrrigacao((prev) =>
-        Math.max(0, Math.min(100, prev + (Math.random() * 5 - 2.5)))
-      );
-
-      if (Math.random() > 0.8) {
-        setBarChartData(generateBarChartData());
+    const fetchData = async () => {
+      try {
+        const response = await getDashboardData();
+        setDashboardData(response.data);
+        setError(null);
+      } catch (err) {
+        console.error("Falha ao buscar dados do dashboard:", err);
+        setError("Não foi possível conectar ao sistema de irrigação.");
       }
-    }, 3000);
+    };
 
-    return () => clearInterval(intervalo);
+    fetchData(); 
+    const intervalId = setInterval(fetchData, 5000); 
+
+    return () => clearInterval(intervalId);
   }, []);
+
+  if (error) {
+    return <div className="dashboard-container error-message">{error}</div>;
+  }
+
+  if (!dashboardData) {
+    return <div className="dashboard-container loading-message">Carregando dados do sistema...</div>;
+  }
 
   return (
     <div className="dashboard-container">
       <h1>Painel de Irrigação</h1>
       <div className="dashboard-grid">
         <div className="water-usage-container" data-area="usage">
-          <WaterUsage usage={fluxoAgua} maxUsage={10000} />
+          <WaterUsage
+            usage={dashboardData.waterUsage.liters}
+            maxUsage={dashboardData.waterUsage.maxLiters}
+          />
         </div>
 
         <div className="next-irrigation-container" data-area="next">
-          <NextIrrigationCard percentage={proximaIrrigacao} />
+          <NextIrrigationCard
+            percentage={dashboardData.nextIrrigation.percentage}
+          />
         </div>
 
         <div className="temperature-container" data-area="temp">
           <DashboardCard
             title="Temperatura"
-            customContent={<Thermometer temperature={temperatura} />}
+            customContent={
+              <Thermometer temperature={dashboardData.temperature.current} />
+            }
           />
         </div>
 
         <div className="system-status-container" data-area="status">
-          <SystemStatusCard isActive={statusBomba} />
+          <SystemStatusCard
+            isActive={dashboardData.systemStatus.status === "ACTIVE"}
+            uptime={dashboardData.systemStatus.uptime}
+            lastCheck={dashboardData.systemStatus.lastCheck}
+          />
         </div>
 
         <div className="level-container" data-area="level">
           <DashboardCard
             title="Nível de água"
-            customContent={<WaterLevel level={nivelAgua} />}
+            customContent={<WaterLevel level={dashboardData.waterLevel.percentage} />}
           />
         </div>
 
         <div className="moisture-container" data-area="moisture">
           <DashboardCard
             title="Umidade do Solo"
-            customContent={<SoilMoisture moisture={umidadeSolo} />}
+            customContent={
+              <SoilMoisture moisture={dashboardData.soilMoisture.percentage} />
+            }
           />
         </div>
 
@@ -93,11 +94,11 @@ const IrrigacaoClient = () => {
             title="Agenda de Irrigação"
             customContent={
               <div className="bar-chart">
-                {barChartData.map((bar, index) => (
+                {dashboardData.irrigationSchedule.map((bar, index) => (
                   <div
                     key={index}
                     className="bar"
-                    style={{ height: `${bar.value}px` }}
+                    style={{ height: `${bar.value}%` }} // Usando porcentagem para melhor escala
                     data-value={bar.day}
                   />
                 ))}

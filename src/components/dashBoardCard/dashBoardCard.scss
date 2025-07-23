@@ -33,10 +33,6 @@
     color: $red;
   }
 
-  &:hover {
-    transform: translateY(-0.25rem);
-  }
-
   &-large {
     background-color: lighten($blue, 30%);
   }
